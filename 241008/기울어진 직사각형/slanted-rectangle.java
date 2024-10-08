@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
 
+// 결론 : 네 방향 탐색 할 수 있도록 반복문 세팅해놓고 
+// 한 방향 당 몇 칸 가는지를 반복문으로 구현한다. 
+
 public class Main {
 
     public static int n;
@@ -32,7 +35,7 @@ public class Main {
                 // 대각선 1방향에 대해 l번 이동하기 or
                 // 대각선 2방향에 대해 k번 이동하기 or
                 // 대각선 3방향에 대해 l번 이동하기 -> 이래서 k,l 두개인데 배열 크기 4로 함.(방향 4개니까)
-                
+
                 x += dx[d];
                 y += dy[d];
 
