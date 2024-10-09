@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    public static int semiMin = Integer.MAX_VALUE;
+    //public static int semiMin = Integer.MAX_VALUE;
     public static int finalMax = Integer.MIN_VALUE;
     public static final int MAX_N = 10;
     public static int n;
@@ -14,6 +14,8 @@ public class Main {
 
     public static void dfs(int cnt){
         if (cnt == n){
+
+            int semiMin = Integer.MAX_VALUE;
             for (int i = 0; i < picked.size(); i++){
                 semiMin = Math.min(semiMin, map[i][picked.get(i)]);
             }
@@ -29,7 +31,7 @@ public class Main {
             visited[i] = true;
             picked.add(i);
             
-            dfs(cnt++);
+            dfs(cnt+1);
 
             visited[i] = false;
             picked.remove(picked.size()-1);
