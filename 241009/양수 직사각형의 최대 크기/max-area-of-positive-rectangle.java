@@ -8,7 +8,7 @@ public class Main {
     public static int n;
     public static int m;
 
-    // 좌표에 포함되는 값들이 양수인지 구하기
+    // 좌표에 포함되는 값들이 양수 판별하고, 양수라면 최종 크기 반환하기
     public static int isPositive(int x1, int y1, int x2, int y2){
         int count = 0;
 
@@ -34,7 +34,7 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        int maxSize = 0;
+        int maxSize = -1;
 
         // 맵 초기화
         for (int i = 0; i < n; i++){
