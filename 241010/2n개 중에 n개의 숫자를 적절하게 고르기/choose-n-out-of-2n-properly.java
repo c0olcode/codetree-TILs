@@ -5,7 +5,7 @@ public class Main {
 
     public static final int MAX_N = 10;
     public static int n;
-    public static int map[] = new int[MAX_N*2];
+    public static int map[];
     public static int min = Integer.MAX_VALUE;
     public static int totalSum = 0;
     public static ArrayList<Integer> select = new ArrayList<>();
@@ -15,6 +15,7 @@ public class Main {
         for (int i = 0; i < select.size(); i++){
             value += map[select.get(i)];
         }
+
         int second = totalSum - value;
 
         return Math.abs(value - second);
@@ -47,6 +48,7 @@ public class Main {
 
         n = Integer.parseInt(st.nextToken());
         st = new StringTokenizer(br.readLine());
+        map = new int[2*n];
 
         for (int i = 0; i < 2*n; i++){
             map[i] = Integer.parseInt(st.nextToken());
