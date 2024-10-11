@@ -39,15 +39,50 @@ public class Main {
         max = Math.max(max, count);
     }
 
+    public static void zeroBfs(){
+        Queue<Pair> q = new LinkedList<>();
+
+        for (int i = 0; i < start.size(); i++){
+            Pair obj = start.get(i);
+            visited[obj.x][obj.y] = true;
+            q.add(obj);
+        }
+
+        while(!q.isEmpty()){
+            int dx[] = {0,0,1,-1};
+            int dy[] = {1,-1,0,0};
+
+            Pair obj = q.poll();
+
+            for (int i = 0; i < 4; i++){
+                int x = obj.x + dx[i];
+                int y = obj.y + dy[i];
+
+                if (inRange(x,y) && map[x][y] == 0 && !visited[x][y]){
+                    visited[x][y] = true;
+                    q.add(new Pair(x,y));
+                }
+            }
+        }
+
+        countMap();        
+    }
+
     public static void bfs(){
         Queue<Pair> q = new LinkedList<>();
 
-        // 선택된 돌을 큐에 넣고 && 1->0으로 바꾸고 && 방문 표시하기
+        // 선택된 돌을 1->0으로 바꾸기
         for (int i = 0; i < select.size(); i++){ // select.size()==m 이어야함
             Pair obj = select.get(i);
             map[obj.x][obj.y] = 0;
+            //visited[obj.x][obj.y] = true;
+            //q.add(select.get(i));
+        }
+
+        for (int i = 0; i < start.size(); i++){
+            Pair obj = start.get(i);
             visited[obj.x][obj.y] = true;
-            q.add(select.get(i));
+            q.add(start.get(i));
         }
 
         while(!q.isEmpty()){
@@ -136,12 +171,18 @@ public class Main {
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
             
-            start.add(new Pair(x,y));
+            start.add(new Pair(x-1,y-1));
         }
 
         // 해당 함수에서 최대 칸 수 구함
-        dfs(0,0);
+        // m = 0인 경우에는 따로 구하기
+        if (m == 0){
+            // 뽑아낼 돌 골라낼 필요 없이, 바로 시작점 넣어서 bfs 탐색
+            zeroBfs();
 
+        }else{
+            dfs(0,0);
+        }
         System.out.print(max);
 
     }
