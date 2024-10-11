@@ -43,12 +43,6 @@ public class Main {
         }
     }
 
-    public static void notAroundWaterInitialize(){
-        while(!(notAroundWater.size() == 0)){
-            notAroundWater.remove(notAroundWater.size()-1);
-        }
-    }
-
     public static boolean isOutWaterVisited(){
         for (int i = 0; i < m; i++){
             if (visited[0][i]) return true;
@@ -199,7 +193,7 @@ public class Main {
             time++;
 
             // notAroundWater 초기화하기 && visit도 초기화(사실 안해도 되긴 할듯)
-            notAroundWaterInitialize();
+            notAroundWater.clear();
             
         }
 
