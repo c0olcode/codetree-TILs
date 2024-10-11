@@ -20,6 +20,7 @@ public class Main {
 
     // 둘러쌓이지 않은 물 리스트
     public static ArrayList<Pair> notAroundWater = new ArrayList<>();
+    public static Queue<Pair> q = new LinkedList<>();
 
     // 빙하가 있는지 확인하기
     public static boolean isAllZero(){
@@ -59,7 +60,8 @@ public class Main {
 
     // 물 (x,y)가 둘러쌓였는지 여부 확인
     public static void inBfs(int x, int y){
-        Queue<Pair> q = new LinkedList<>();
+        // 큐 초기화하기
+        q.clear();
 
         //방문여부 초기화하기
         visitedInitialize();
@@ -116,7 +118,7 @@ public class Main {
 
     public static void bfs(){
         // 큐에 0 다 넣기 (둘러쌓인 물 제외, 외곽 물 포함)
-        Queue<Pair> q = new LinkedList<>();
+        q.clear();
         visitedInitialize();
         
         // 둘러 쌓이지 않은 물 insert
@@ -180,8 +182,6 @@ public class Main {
         int time = 0;
 
         while(!isAllZero()){
-            Queue<Pair> q = new LinkedList<>();
-            
             // 둘러쌓였는지 확인하기
             around();
 
