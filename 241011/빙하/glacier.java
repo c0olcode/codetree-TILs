@@ -15,8 +15,8 @@ public class Main {
 
     public static int n;
     public static int m;
-    public static int map[][] = new int[MAXNM][MAXNM];
-    public static boolean visited[][] = new boolean[MAXNM][MAXNM];
+    public static int map[][];
+    public static boolean visited[][];
 
     // 둘러쌓이지 않은 물 리스트
     public static ArrayList<Pair> notAroundWater = new ArrayList<>();
@@ -171,6 +171,9 @@ public class Main {
 
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
+
+        map = new int[n][m];
+        visited = new int[n][m];
 
         for (int i = 0; i < n; i++){
             st = new StringTokenizer(br.readLine());
