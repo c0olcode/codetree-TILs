@@ -173,7 +173,7 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
 
         map = new int[n][m];
-        visited = new int[n][m];
+        visited = new boolean[n][m];
 
         for (int i = 0; i < n; i++){
             st = new StringTokenizer(br.readLine());
