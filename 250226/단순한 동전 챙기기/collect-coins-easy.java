@@ -82,7 +82,7 @@ public class Main {
         for (int num = 1; num <= 9; num++){
             for (int i = 0; i < N; i++){
                 for (int j = 0; j < N; j++){
-                    if (num + ''== grid[i][j]){
+                    if (num + '0'== grid[i][j]){
                         list.add(new Pair(i,j));
                     }
                 }
