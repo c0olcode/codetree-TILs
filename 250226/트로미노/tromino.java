@@ -1,90 +1,84 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
 
+    public static int N,M,max;
     public static int map[][];
 
-    public static int searchTwoTwo(int start_i, int start_j){
-
-        int min = 1001;
-        int plus = 0;
-        for (int i = start_i; i <= start_i + 1; i++){
-            for (int j = start_j; j <= start_j + 1; j++){
-                min = Math.min(min, map[i][j]);
-                plus += map[i][j];
-            }
+    public static void onethreeSearch(int x, int y){
+        int cnt = 0;
+        for (int j = y; j <= y+2; j++){
+            cnt += map[x][j];
         }
-        //System.out.println(plus-min);
-
-        return plus-min;
+        max = Math.max(cnt, max);
     }
 
+    public static void threeoneSearch(int x, int y){
+        int cnt = 0;
+        for (int i = x; i <= x+2; i++){
+            cnt += map[i][y];
+        }
+        max = Math.max(cnt, max);
+    }
+
+    public static void twotwoSearch(int x, int y){
+        int cnt = 0;
+        int min = Integer.MAX_VALUE;
+
+        for (int i = x; i <= x+1; i++){
+            for (int j = y; j <= y+1; j++){
+                cnt += map[i][j];
+                min = Math.min(min, map[i][j]);
+            }
+        }
+
+        cnt = cnt-min;
+        max = Math.max(max,cnt);
+
+    }
     public static void main(String[] args) throws IOException{
-        // 여기에 코드를 작성해주세요.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
-        map = new int[n][m];
-        int max = 0;
+        map = new int[N][M];
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < N; i++){
             st = new StringTokenizer(br.readLine());
-            for (int j = 0 ; j < m; j++){
+            for (int j = 0 ; j < M; j++){
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        // 1*3 탐색
-        for (int i = 0; i < n; i++){
-            for (int j = 0 ; j < m; j++){
-                if (j + 2 >= m) break;
-
-                int start_j = j;
-                int plus = 0;
-                for (int x = start_j; x <= start_j+2; x++){
-                    plus += map[i][x];
-                }
-                //System.out.println(plus);
-                max = Math.max(max, plus);
+        // 1. 1*3 탐색
+        for (int i = 0; i < N; i++){
+            for (int j = 0; j < M; j++){
+                if (j+2 >= M) break;
+                onethreeSearch(i,j);
             }
         }
 
-        // 3*1 탐색
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
-                if (j + 2 >= n) break;
-
-                int start_j = j;
-                int plus = 0;
-                
-                for (int x = start_j; x <= start_j+2; x++){
-                    plus += map[x][i];
-                }
-                //System.out.println(plus);
-                max = Math.max(max, plus);
+        // 2. 3*1 탐색
+        for (int i = 0; i < N; i++){
+            if (i+2 >= N) break;
+            for (int j = 0; j < M; j++){
+                threeoneSearch(i,j);
             }
         }
 
-        // 2*2 탐색
-        for (int i = 0 ; i < n; i++){
-            if (i + 1 >= n) break;
-            for (int j = 0; j < m; j++){
-                if (j + 1 >= m) break;
+        // 3. 2*2 탐색
+        for (int i = 0; i < N; i++){
+            if (i+1 >= N) break;
+            for (int j = 0; j < M; j++){
+                if (j+1 >= M) break;
 
-                int start_i = i;
-                int start_j = j;
-
-                int plus = searchTwoTwo(start_i, start_j);
-                max = Math.max(max, plus);
+                twotwoSearch(i,j);
             }
         }
 
         System.out.println(max);
-
-
     }
 }
