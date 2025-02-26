@@ -3,7 +3,7 @@ public class Main {
 
     public static int n;
     public static int MAX_N = 8;
-    public static boolean visit[] = new boolean[MAX_N];
+    public static boolean visit[] = new boolean[MAX_N + 1];
     public static ArrayList<Integer> list = new ArrayList<>();
 
     public static void dfs(int cnt){
