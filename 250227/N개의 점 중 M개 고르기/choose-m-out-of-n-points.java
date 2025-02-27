@@ -18,13 +18,20 @@ public class Main {
 
     public static void dist(){
         // 1. 유클리디안 거리 재기
-        Pair p1 = select_list.get(0);
-        Pair p2 = select_list.get(1);
+        int max_dist = -1;
+            // 이중 for문 돌려서 거리 하나씩 다 계산 하기
+        for (int i = 0; i < m-1; i++){
+            for (int j = 0; j < m; j++){
+                Pair p1 = select_list.get(i);
+                Pair p2 = select_list.get(j);
+                int u_dist = (int)(Math.pow(p1.x-p2.x,2) + Math.pow(p1.y-p2.y,2));
 
-        int u_dist = (int)(Math.pow(p1.x-p2.x,2) + Math.pow(p1.y-p2.y,2));
+                // 2. 최대 거리 업데이트 하기. 
+                max_dist = Math.max(u_dist, max_dist); 
+            }
+        }
 
-        // 2. 최소 거리 업데이트 하기. 
-        min_dist = Math.min(u_dist, min_dist); 
+        min_dist = Math.min(max_dist, min_dist);
     }
 
     public static void combination(int index, int cnt){
