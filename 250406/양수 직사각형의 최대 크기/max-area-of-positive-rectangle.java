@@ -9,7 +9,7 @@ public class Main {
 
         for (int i = x1; i <= x2; i++){
             for (int j = y1; j <= y2; j++){
-                if (map[i][j] < 0){ // 값이 음수라면
+                if (map[i][j] <= 0){ // 값이 음수라면
                     return;
                 }
                 cnt++;
