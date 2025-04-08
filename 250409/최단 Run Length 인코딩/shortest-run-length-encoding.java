@@ -27,6 +27,7 @@ public class Main {
                     cnt = 1;
                 }
             }
+            // 마지막 그룹은 추가 안되므로, 반복문 끝난후 추가해줘야함. 
             sb.append(pre_char);
             sb.append(cnt);
             
