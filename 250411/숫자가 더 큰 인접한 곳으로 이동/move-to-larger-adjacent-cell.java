@@ -1,8 +1,6 @@
 import java.util.Scanner;
 public class Main {
-
     static int n;
-
     public static boolean inRange(int x, int y){
         return x >= 0 && x < n && y >= 0 && y < n;
     }
@@ -22,7 +20,7 @@ public class Main {
         System.out.print(map[r][c] + " "); //제일 처음 숫자
         
         int dx[] = {-1,1,0,0};
-        int dy[] = {0,0,1,-1};
+        int dy[] = {0,0,-1,1};
 
         while(true){
             boolean moved = false;
