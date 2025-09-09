@@ -28,7 +28,7 @@ public class Main {
 
             t++;
 
-            if (x == 0 & y == 0){
+            if (x == 0 && y == 0){
                 result = t;
                 break;
             }
