@@ -9,7 +9,7 @@ public class Main {
         int cnt = 0;
         for (int x = i; x <= k; x++){
             for (int y = j; y <= l; y++){
-                if (grid[x][y] < 0) return;
+                if (grid[x][y] <= 0) return;
                 cnt++;
             }
         }
