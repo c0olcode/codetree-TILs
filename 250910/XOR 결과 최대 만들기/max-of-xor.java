@@ -9,10 +9,10 @@ public class Main {
     public static void dfs(int index, int cnt){
         if (cnt == m){
             // xor 연산
-            int value = list.get(0);
+            int value = A[list.get(0)];
 
             for (int i =1; i < m; i++){
-                value = value ^ list.get(i);
+                value = value ^ A[list.get(i)];
             }
 
             max = Math.max(value,max);
